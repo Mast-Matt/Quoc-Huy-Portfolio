@@ -1,0 +1,35 @@
+---
+title: Map2D
+slug: map2d
+summary: A Java points-of-interest engine that returns service-based queries inside user-defined boundaries — backed by a quadtree, scales to 100 million POIs on a 10M × 10M grid.
+period: Mar 2024 – May 2024
+stack: [Java, Quadtree, JUnit]
+github: https://github.com/huy-nguyen
+demo:
+cover: /projects/placeholder.jpg
+featured: true
+order: 3
+---
+
+## The problem
+
+Given a very large, very sparse 2D map (think: every coffee shop, ATM, pharmacy in a city-sized region) — answer **"what services exist inside this rectangle?"** fast enough to feel instant, for arbitrary boundaries and arbitrary services.
+
+The constraint: the dataset can be up to **100 million POIs** on a 10,000,000 × 10,000,000 grid. A naive scan is obviously out.
+
+## The design
+
+A **quadtree**, keyed by POI position, with each leaf holding a small bucket of POIs. Range queries recurse only into quadrants that intersect the user's boundary. Service filtering happens at the leaf level so the tree itself doesn't carry service metadata.
+
+```
+search(rect):
+  if node.bbox does not intersect rect: return []
+  if node is leaf: return [p for p in node.bucket if rect.contains(p) and p.matches(service)]
+  return concat(search(child) for child in node.children)
+```
+
+## What I learned
+
+- Picking a bucket size is the whole game. Too small → tree grows tall and pointer-chasing dominates. Too big → leaves degrade to linear scans. I tuned this empirically against a synthetic distribution.
+- Range queries are easy to get right *or* fast — getting both takes care with the recursion's pruning. The bbox-intersection test belongs at the *top* of every recursive call, not as a postcondition.
+- Working with 100M elements in a student project teaches respect for object allocation overhead. Java's GC will let you write it, but it'll also tell you if you wrote it badly.

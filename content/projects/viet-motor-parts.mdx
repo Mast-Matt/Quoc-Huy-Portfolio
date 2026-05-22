@@ -1,0 +1,35 @@
+---
+title: Viet Motor Parts
+slug: viet-motor-parts
+summary: Full-stack e-commerce platform for Vietnam's motorcycle parts industry, with a parts-compatibility checker, interest-rate calculator, and PayPal Sandbox checkout.
+period: Oct 2024 – Jan 2025
+stack: [Next.js, Node.js, MongoDB, TailwindCSS, PayPal]
+github: https://github.com/huy-nguyen
+demo:
+cover: /projects/placeholder.jpg
+featured: true
+order: 2
+---
+
+## The problem
+
+Vietnam's motorcycle aftermarket is huge but fragmented — buyers need to know which parts fit which bikes, what financing looks like, and they want to pay online without friction. Most existing storefronts solve at most one of those.
+
+## My role
+
+Full-stack, in a four-person student team running a hybrid Waterfall–Scrum process. I led the front-end and shared back-end work.
+
+## What we built
+
+- **Storefront** in Next.js + TailwindCSS, with MongoDB-backed catalog, browsing by bike model, and faceted filters.
+- **Part compatibility checker** — pick your bike, the catalog filters to parts known to fit. Saves the buyer the back-and-forth of confirming with a mechanic.
+- **Interest-rate calculator** for installment plans — useful in a market where financed purchases are common.
+- **PayPal Sandbox checkout** over TLS 1.3 for the payment flow.
+
+## Process
+
+Agile-ish: GitHub for source + PR review, Trello for the backlog, sprint retrospectives every two weeks. The hybrid Waterfall–Scrum part was real — the scope was fixed upfront for the academic deliverable, but we ran iterative sprints inside that envelope.
+
+## What I'd do differently
+
+Compatibility data was the hardest thing in the project, and we treated it as a catalog problem. It's really a graph problem — bikes have variants, parts have revisions, "fits" is a many-to-many with conditions. A small graph schema would have saved a lot of `if`-statements later.

@@ -1,0 +1,35 @@
+---
+title: Multi-Agent Enterprise Chatbot
+slug: nashtech-chatbot
+summary: Production front-end for a Next.js + FastAPI multi-agent chatbot that answers from 10,000+ indexed documents and hands off cleanly to humans.
+period: Apr 2025 – Aug 2025
+stack: [Next.js, React, TailwindCSS, FastAPI, OpenAI Agent SDK, Azure]
+github:
+demo:
+cover: /projects/placeholder.jpg
+featured: true
+order: 1
+---
+
+## The problem
+
+Internal stakeholders at NashTech needed an enterprise chatbot that could answer questions across a corpus of more than **10,000 indexed documents** — and gracefully escalate to a human when it shouldn't try to answer alone. The catch: existing prototypes routed too many tickets to humans (and routed many of them to the wrong queue), so adoption was poor.
+
+## My role
+
+I owned the **front-end architecture** of the system during my internship: the chat UI, agent state, streaming responses, and the AI-to-human handoff flow. I worked alongside backend engineers building the FastAPI service and AI engineers wiring the OpenAI Agent SDK.
+
+## What I built
+
+- **Chat surface** in Next.js (App Router) + React + TailwindCSS, with streaming responses, citation chips that link back into the document corpus, and stop/regenerate controls.
+- **Multi-agent routing UI** — users see which agent is currently responding (research vs. policy vs. support), with smooth transitions between agents mid-conversation.
+- **AI-to-human handoff workflow** — queue-based routing with full conversation context preserved. The agent decides *when* to hand off, but the UI shows *why*, and a human sees the relevant slice of history rather than the whole transcript.
+
+## Outcomes
+
+- Reduced unintentional or misrouted escalations by an **estimated 40%**, primarily by preserving handoff context and being explicit in the UI about why a handoff happened.
+- The system was showcased at the **2025 Capstone Project Showcase** as a worked example of enterprise-ready AI-human collaboration.
+
+## What I'd do differently
+
+A streaming chat UI is mostly state-management problems wearing a costume — message ordering, partial-token rendering, abortable requests, optimistic updates. Next time I'd reach for a state machine (XState or a hand-rolled reducer) from day one instead of growing one accidentally inside `useState` calls.
