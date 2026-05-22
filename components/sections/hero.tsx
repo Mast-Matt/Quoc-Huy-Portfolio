@@ -86,8 +86,8 @@ export function Hero() {
                 className="absolute inset-0 -z-10 rounded-full bg-gradient-to-br from-accent via-muted to-card blur-2xl"
               />
               <Image
-                src="/avatar.png"
-                alt={`${siteConfig.name} avatar`}
+                src="/avatar.jpg"
+                alt={`${siteConfig.name} portrait`}
                 width={480}
                 height={480}
                 priority

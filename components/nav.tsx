@@ -37,7 +37,7 @@ export function Nav() {
           aria-label="Home"
         >
           <Image
-            src="/avatar.png"
+            src="/avatar.jpg"
             alt=""
             width={36}
             height={36}
