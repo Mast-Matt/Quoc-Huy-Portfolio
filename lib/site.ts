@@ -8,7 +8,7 @@ export const siteConfig = {
   location: "Ho Chi Minh City, Vietnam",
   email: "nguyenhuuquochuy2@gmail.com",
   phone: "+84 907 760 413",
-  url: "https://quochuy.vercel.app",
+  url: "https://quoc-huy-portfolio.vercel.app/",
   resumeUrl: "/resume.pdf",
   description:
     "Personal portfolio of Nguyen Huu Quoc Huy — software engineer specialising in Next.js, React, TailwindCSS, and AI-integrated web products.",
